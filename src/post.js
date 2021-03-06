@@ -36,7 +36,13 @@ export default class Post {
     }
 
     async BuildHTML() {
-        const ftch = this.data.type.type == 'UPDATE' || this.data.type.type == 'DELETE' ? fetch(this.fullpath, { method: this.data.type.type, body: {} }) : fetch(this.fullpath, { method: this.data.type.type });
+        const ftch =
+            this.data.type.type == "UPDATE" || this.data.type.type == "DELETE"
+                ? fetch(this.fullpath, {
+                      method: this.data.type.type,
+                      body: {},
+                  })
+                : fetch(this.fullpath, { method: this.data.type.type });
         const data = await ftch //await fetch(this.fullpath, { method: this.data.type.type })
         .then( response => response.json() )
         .then( data => {
